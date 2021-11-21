@@ -1,0 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bignum.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/19 16:16:32 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/20 15:24:15 by rpapagna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../libft/includes/libft.h"
+#include "libbignum.h"
+
+int				bignum_init_eval(char *n)
+{
+	size_t		i;
+	size_t		len;
+
+	i = 0;
+	len = ft_strlen(n);
+	if (n[i] == '-' && ft_isdigit(n[i + 1]))
+		++i;
+	if (!n[i])
+		return (0);
+	while (i < len)
+	{
+		if (n[i] >= '0' && n[i] <= '9')
+			++i;
+		else
+			break ;
+	}
+	return (i);
+}
+
+t_bignum*		bignum_init(char* number)
+{
+	t_bignum	*a;
+	size_t		i;
+
+	if (!number)
+		return (NULL);
+	a = (t_bignum *)malloc(sizeof(t_bignum));
+	a->sign = *number == '-' ? 1 : 0;
+	a->len = bignum_init_eval(number);
+	i = ft_strncmp(number, "-0", a->len);
+	if (!a->len || !i || i > '9')
+	{
+		a->len = 1;
+		number = "0";
+	}
+	a->alloc_size = a->len;
+	a->number = (char *)malloc(a->alloc_size + 1);
+	i = 0;
+	while (i < a->alloc_size)
+	{
+		a->number[i] = number[i];
+		++i;
+	}
+	a->number[i] = '\0';
+	return a;
+}
+
+void			bignum_del(t_bignum** p)
+{
+	free((*p)->number);
+	(*p)->number = NULL;
+	(*p)->alloc_size = 0;
+	(*p)->len = 0;
+	(*p)->sign = 0;
+	free(*p);
+	*p = NULL;
+}
