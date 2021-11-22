@@ -6,7 +6,7 @@
 /*   By: rpapagna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:39:10 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/20 11:22:38 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/22 16:55:17 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,12 @@ void				bignum_del(t_bignum **p);
 t_bignum*			bignum_add(t_bignum* a1, t_bignum* a2);
 
 /*
-	Subtracts s from m, and stores the differnece in dif.
+	Subtracts s from m, and returns a malloced pointer to the difference.
 	
 	m - pointer to the minuend
 	s - pointer to the subtrahend
-	dif - pointer to the differnece
 */
-void				bignum_minus(t_bignum* m, t_bignum* s, t_bignum* dif);
+t_bignum*			bignum_minus(t_bignum* m, t_bignum* s);
 
 /*
 	Multiplies m1 by m2, and stores the product in prod.
