@@ -6,7 +6,7 @@ int main(void) {
 
 /*
 	Testing bignum_init and bignum_del
-	
+
 	t_bignum*	a;
 	char* number;
 
@@ -127,6 +127,7 @@ int main(void) {
 	printf("equal?: %s\n", bignum_eq(a, b)? "false" : "true");
 	bignum_del(&a);
 	bignum_del(&b);
+
 */
 
 /*
@@ -449,7 +450,7 @@ int main(void) {
 	bignum_del(&b);
 	bignum_del(&c);
  
- */
+*/
 
 /*
 	Testing bignum_add with negatives
@@ -471,25 +472,25 @@ int main(void) {
 	// bignum_del(&c);
 
 	
-	num1 = "100000";
-	num2 = "-100001";
-	a = bignum_init(num1);
-	b = bignum_init(num2);
-	c = bignum_add(a, b);
-	printf("%s + %s = %s\n", a->number, b->number, c->number);
-	bignum_del(&a);
-	bignum_del(&b);
-	bignum_del(&c);
+	// num1 = "100000";
+	// num2 = "-100001";
+	// a = bignum_init(num1);
+	// b = bignum_init(num2);
+	// c = bignum_add(a, b);
+	// printf("%s + %s = %s\n", a->number, b->number, c->number);
+	// bignum_del(&a);
+	// bignum_del(&b);
+	// bignum_del(&c);
 	
-	num1 = "-100000";
-	num2 = "100001";
-	a = bignum_init(num1);
-	b = bignum_init(num2);
-	c = bignum_add(a, b);
-	printf("%s + %s = %s\n", a->number, b->number, c->number);
-	bignum_del(&a);
-	bignum_del(&b);
-	bignum_del(&c);
+	// num1 = "-100000";
+	// num2 = "100001";
+	// a = bignum_init(num1);
+	// b = bignum_init(num2);
+	// c = bignum_add(a, b);
+	// printf("%s + %s = %s\n", a->number, b->number, c->number);
+	// bignum_del(&a);
+	// bignum_del(&b);
+	// bignum_del(&c);
 	
 	num1 = "179";
 	num2 = "-100169";
@@ -582,37 +583,37 @@ int main(void) {
 	bignum_del(&c);
 
 	
-	num1 = "1";
-	num2 = "420420420420420420420420420420420420420420420420420420420420420420420420420420420420";
-	a = bignum_init(num1);
-	b = bignum_init(num2);
-	c = bignum_add(a, b);
-	printf("%s + %s = %s\n", a->number, b->number, c->number);
-	bignum_del(&a);
-	bignum_del(&b);
-	bignum_del(&c);
+	// num1 = "1";
+	// num2 = "420420420420420420420420420420420420420420420420420420420420420420420420420420420420";
+	// a = bignum_init(num1);
+	// b = bignum_init(num2);
+	// c = bignum_add(a, b);
+	// printf("%s + %s = %s\n", a->number, b->number, c->number);
+	// bignum_del(&a);
+	// bignum_del(&b);
+	// bignum_del(&c);
 
-	num1 = "1000000050";
-	num2 = "7000000050";
-	a = bignum_init(num1);
-	b = bignum_init(num2);
-	c = bignum_add(a, b);
-	printf("%s + %s = %s\n", a->number, b->number, c->number);
-	bignum_del(&a);
-	bignum_del(&b);
-	bignum_del(&c);
+	// num1 = "1000000050";
+	// num2 = "7000000050";
+	// a = bignum_init(num1);
+	// b = bignum_init(num2);
+	// c = bignum_add(a, b);
+	// printf("%s + %s = %s\n", a->number, b->number, c->number);
+	// bignum_del(&a);
+	// bignum_del(&b);
+	// bignum_del(&c);
 
-	num1 = "40000040";
-	num2 = "40000059";
-	a = bignum_init(num1);
-	b = bignum_init(num2);
-	c = bignum_add(a, b);
-	printf("%s + %s = %s\n", a->number, b->number, c->number);
-	bignum_del(&a);
-	bignum_del(&b);
-	bignum_del(&c);
+	// num1 = "40000040";
+	// num2 = "40000059";
+	// a = bignum_init(num1);
+	// b = bignum_init(num2);
+	// c = bignum_add(a, b);
+	// printf("%s + %s = %s\n", a->number, b->number, c->number);
+	// bignum_del(&a);
+	// bignum_del(&b);
+	// bignum_del(&c);
 
-	
+/**/
 
 
 	return (0);
