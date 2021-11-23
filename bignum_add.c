@@ -50,7 +50,7 @@ static t_bignum*	do_work(t_bignum* n1, t_bignum* n2, char* result, size_t k)
 	size_t	i;
 	size_t	j;
 
-	init_result(result, k, n1->sign);
+	init_result(result, k, (int)n1->sign);
 	i = n1->len;
 	j = n2->len;
 	while (!(i == 0 && j == 0))
@@ -72,10 +72,10 @@ t_bignum*			bignum_add(t_bignum* a1, t_bignum* a2)
 	char*		result;
 	t_bignum*	sum;
 	
+	if (a1->sign != a2->sign)
+		return (bignum_minus(a1, a2));
 	k = 1 + ((a1->len > a2->len) ? a1->len : a2->len);
 	result = (char *)malloc(sizeof(char) * (k + 1));
-	if (a1->sign != a2->sign) ;
-		// return (bignum_difference(a1, a2));
 	sum = do_work(a1, a2, result, k);
 	free(result);
 	return (bignum_trunc(sum));
