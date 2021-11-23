@@ -6,7 +6,7 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:16:32 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/20 15:24:15 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:12:20 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_bignum*		bignum_init(char* number)
 	i = ft_strncmp(number, "-0", a->len);
 	if (!a->len || !i || i > '9')
 	{
+		a->sign = 0;
 		a->len = 1;
 		number = "0";
 	}
@@ -59,16 +60,5 @@ t_bignum*		bignum_init(char* number)
 		++i;
 	}
 	a->number[i] = '\0';
-	return a;
-}
-
-void			bignum_del(t_bignum** p)
-{
-	free((*p)->number);
-	(*p)->number = NULL;
-	(*p)->alloc_size = 0;
-	(*p)->len = 0;
-	(*p)->sign = 0;
-	free(*p);
-	*p = NULL;
+	return (a);
 }
