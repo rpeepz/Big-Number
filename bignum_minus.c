@@ -6,7 +6,7 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:53:16 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/23 10:54:20 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/23 14:32:05 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_bignum*	do_work(t_bignum* n1, t_bignum *n2, size_t k, int type)
 	size_t		i;
 	size_t		j;
 	char*		result;
-	t_bignum*	num;
+	t_bignum*	bignum;
 
 	result = (char*)malloc(sizeof(char) * (k + 1));
 	init_result(result, k, (int)n1->sign);
@@ -27,96 +27,62 @@ static t_bignum*	do_work(t_bignum* n1, t_bignum *n2, size_t k, int type)
 	while (!(i == 0 && j == 0))
 	{
 		--k;
-		if (type)
+		result[k] += (type ? do_dif(&i, &j, n1->number, n2->number) :\
+							do_sum(&i, &j, n1->number, n2->number));
+		if (type && k && result[k] < '0')
 		{
-			result[k] += do_dif(&i, &j, n1->number, n2->number);
-			if (k && result[k] < '0')
-			{
-				result[k] += 10;
-				result[k - 1] -= 1;
-			}
+			result[k] += 10;
+			result [k - 1] -= 1;
 		}
-		else
+		else if (!type && k && result[k] > '9')
 		{
-			result[k] += do_sum(&i, &j, n1->number, n2->number);
-			if (k && result[k] > '9')
-			{
-				result[k] -= 10;
-				result[k - 1] += 1;
-			}
+			result[k] -= 10;
+			result[k - 1] += 1;
 		}
 	}
-	num = bignum_init(result);
+	bignum = bignum_init(result);
 	free(result);
-	return (num);
+	return (bignum);
 }
 
-static int			check_sign(t_bignum* n1, t_bignum* n2, int type)
+static void			check_revert(t_bignum* n, int step)
 {
-	if (n1->sign)
+	if (step == 0)
 	{
-		n1->sign = 0;
-		n1->number = (n1->number) + 1;
-		n1->len -= 1;
-		if (type && !bignum_eq(n1, n2))
-		{
-			n1->sign = 1;
-			n1->number = (n1->number) - 1;
-			n1->len += 1;
-			return (-1);
-		}
-		if (type && bignum_gt(n1, n2))
-		{
-			n1->sign = 1;
-			n1->number = (n1->number) - 1;
-			n1->len += 1;
-			bignum_swap(n1, n2);
-			return (1);
-		}
-		else
-		{
-			n1->sign = 1;
-			n1->number = (n1->number) - 1;
-			n1->len += 1;
-		}
+		n->sign = 0;
+		n->number = (n->number) + 1;
+		n->len -= 1;
 	}
-	else if (n2->sign)
+	else if (step == 1)
 	{
-		n2->sign = 0;
-		n2->number = (n2->number) + 1;
-		n2->len -= 1;
-		if (type && !bignum_eq(n1, n2))
-		{
-			n2->sign = 1;
-			n2->number = (n2->number) - 1;
-			n2->len += 1;
-			return (-1);
-		}
-		if (type && bignum_gt(n1, n2))
-		{
-			n2->sign = 1;
-			n2->number = (n2->number) - 1;
-			n2->len += 1;
-			bignum_swap(n1, n2);
-			return (1);
-		}
-		else
-		{
-			n2->number = (n2->number) - 1;
-			n2->sign = 1;
-			n2->len += 1;
-		}
+		n->sign = 1;
+		n->number = (n->number) - 1;
+		n->len += 1;
+	}
+}
+
+static int			check_sign(t_bignum* n1, t_bignum* n2, int type, int l)
+{
+	int		ret;
+
+	check_revert(n1, 0);
+	if (type && !bignum_eq(n1, n2))
+	{
+		check_revert(n1, 1);
+		ret = -1;
+	}
+	if ((!l && type && bignum_gt(n1, n2)) || (l && type && bignum_lt(n1, n2)))
+	{
+		check_revert(n1, 1);
+		bignum_swap(n1, n2);
+		ret = 1;
 	}
 	else
 	{
-		if (bignum_gt(n1, n2))
-		{
-			n2->sign = type;
-			bignum_swap(n1, n2);
-			return (1);
-		}
+		check_revert(n1, 1);
+		ret = 0;
 	}
-	return (0);
+	return (ret);
 }
 
 t_bignum*			bignum_add_neg(t_bignum* n1, t_bignum* n2, int type)
@@ -125,7 +91,18 @@ t_bignum*			bignum_add_neg(t_bignum* n1, t_bignum* n2, int type)
 	size_t		k;
 	t_bignum*	dif;
 
-	if ((swap = check_sign(n1, n2, type)) == -1)
+	swap = 0;
+	if (n1->sign)
+		swap = check_sign(n1, n2, type, 0);
+	else if (n2->sign)
+		swap = check_sign(n2, n1, type, 1);
+	else if (bignum_gt(n1, n2))
+	{
+		n2->sign = type;
+		bignum_swap(n1, n2);
+		swap = 1;
+	}
+	if (swap == -1)
 		return (bignum_init("0"));
 	k = 1 + ((n1->len > n2->len) ? n1->len : n2->len);
 	dif = do_work(n1, n2, k, type);
