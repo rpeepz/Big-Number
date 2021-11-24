@@ -24,12 +24,14 @@ t_bignum*	bignum_trunc(t_bignum* bignum)
 		j = bignum->sign;
 		while (bignum->number[i] == '0')
 			++i;
-		while (i <= bignum->alloc_size)
+		if (i == bignum->alloc_size)
 		{
-			bignum->number[j] = bignum->number[i];
 			++j;
 			++i;
+			bignum->number[j] = '\0';
 		}
+		while (i <= bignum->alloc_size)
+			bignum->number[j++] = bignum->number[i++];
 		bignum->len = j;
 	}
 	return (bignum);
