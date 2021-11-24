@@ -60,5 +60,5 @@ t_bignum*		bignum_init(char* number)
 		++i;
 	}
 	a->number[i] = '\0';
-	return (a);
+	return (bignum_trunc(a));
 }

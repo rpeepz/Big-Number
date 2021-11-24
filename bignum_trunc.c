@@ -6,7 +6,7 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 08:38:40 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/23 08:58:50 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/24 12:01:30 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ t_bignum*	bignum_trunc(t_bignum* bignum)
 			++i;
 			bignum->number[j] = '\0';
 		}
-		while (i <= bignum->alloc_size)
+		while (i <= bignum->alloc_size && i)
 			bignum->number[j++] = bignum->number[i++];
-		bignum->len = j;
+		if (j)
+			bignum->len = j - 1;
 	}
 	return (bignum);
 }
