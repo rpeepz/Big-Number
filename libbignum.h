@@ -104,11 +104,6 @@ t_bignum*			bignum_divide(t_bignum* d1, t_bignum* d2);
 */
 
 /**
-	* Helper Function for comparisons
-**/
-int					bignum_compare(t_bignum* n1, t_bignum* n2, int type);
-
-/**
 	* Compares n1 to n2.
 	*
 	* @returns	0 if n1 is greater.
@@ -146,5 +141,36 @@ t_bignum*			bignum_trunc(t_bignum* bignum);
 	* Swaps data of 'a' and 'b'.
 **/
 void			bignum_swap(t_bignum* a, t_bignum* b);
+
+/*
+--------------------------------------------------------------------------------
+	Helpers
+--------------------------------------------------------------------------------
+*/
+
+/**
+	* Helper Function for comparisons
+**/
+int					bignum_compare(t_bignum* n1, t_bignum* n2, int type);
+
+/**
+	* Helper Function for combining positives and negatives.
+**/
+t_bignum*			bignum_add_neg(t_bignum* n1, t_bignum* n2, int type);
+
+/**
+	* Helper Function for finding the sum of 'bignum'
+**/
+char				do_sum(size_t* i, size_t* j, char* n1, char* n2);
+
+/**
+	* Helper Function for finding the difference of 'bignum'.
+**/
+char				do_dif(size_t* i, size_t* j, char* n1, char* n2);
+
+/**
+	* Helper Function for inititalizing a resulting string to use for bignum.
+**/
+void				init_result(char* result, size_t k, int sign);
 
 #endif

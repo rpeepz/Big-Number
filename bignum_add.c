@@ -13,38 +13,6 @@
 #include "../libft/includes/libft.h"
 #include "libbignum.h"
 
-static char			do_sum(size_t* i, size_t* j, char* n1, char* n2)
-{
-	char	x;
-
-	x = 0;
-	if (*i != 0)
-	{
-		--(*i);
-		if (n1[*i] != '-')
-			x += (n1[*i] - '0');
-	}
-	if (*j != 0)
-	{
-		--(*j);
-		if (n2[*j] != '-')
-			x += (n2[*j] - '0');
-	}
-	return (x);
-}
-
-static void			init_result(char* result, size_t k, int sign)
-{
-	size_t	i;
-
-	i = 0;
-	if (sign)
-		result[i++] = '-';
-	while (i < k)
-		result[i++] = '0';
-	result[i] = '\0';
-}
-
 static t_bignum*	do_work(t_bignum* n1, t_bignum* n2, char* result, size_t k)
 {
 	size_t	i;
@@ -73,7 +41,7 @@ t_bignum*			bignum_add(t_bignum* a1, t_bignum* a2)
 	t_bignum*	sum;
 	
 	if (a1->sign != a2->sign)
-		return (bignum_minus(a1, a2));
+		return (bignum_add_neg(a1, a2, 1));
 	k = 1 + ((a1->len > a2->len) ? a1->len : a2->len);
 	result = (char *)malloc(sizeof(char) * (k + 1));
 	sum = do_work(a1, a2, result, k);
