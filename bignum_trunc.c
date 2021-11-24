@@ -6,11 +6,10 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 08:38:40 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/24 12:01:30 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/24 12:12:21 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
 #include "libbignum.h"
 
 t_bignum*	bignum_trunc(t_bignum* bignum)
