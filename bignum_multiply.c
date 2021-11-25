@@ -6,7 +6,7 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:54:23 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/24 14:54:23 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/24 21:17:33 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static t_bignum*	do_work(t_bignum* n1, t_bignum* n2, char* result, size_t k)
 	init_result(result, k, (n1->sign | n2->sign));
 	i = n1->len;
 	idx_r = (n1->len + n2->len) - 2;
-	k--;
 	while (!(i == 0 && j == 0))
 	{
 		--i;
@@ -38,7 +37,7 @@ static t_bignum*	do_work(t_bignum* n1, t_bignum* n2, char* result, size_t k)
 		while (j != 0)
 		{
 			--j;
-			idx_a = k - (idx_r - (i + j));
+			idx_a = k - 1 - (idx_r - (i + j));
 			result[idx_a] += do_product(n1->number[i], n2->number[j]);
 			while (result[idx_a] > '9' || result[idx_a] < '0')
 			{
