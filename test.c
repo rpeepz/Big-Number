@@ -803,5 +803,93 @@ int main(void) {
 	bignum_del(&b);
 	bignum_del(&c);
 
+/*
+	Testing bignum_multiply
+*/
+
+	printf("-------------------------------\n");
+	printf("bignum_multiply test\n");
+	printf("-------------------------------\n");
+	
+	num1 = "150";
+	num2 = "10";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_multiply(a, b);
+	printf("%s x %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "15";
+	num2 = "10";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_multiply(a, b);
+	printf("%s x %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "123456";
+	num2 = "1000";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_multiply(a, b);
+	printf("%s x %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "100000000";
+	num2 = "0";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_multiply(a, b);
+	printf("%s x %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "10";
+	num2 = "1";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_multiply(a, b);
+	printf("%s x %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "10";
+	num2 = "-1";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_multiply(a, b);
+	printf("%s x %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-10";
+	num2 = "1";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_multiply(a, b);
+	printf("%s x %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-9";
+	num2 = "9";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_multiply(a, b);
+	printf("%s x %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
 	return (0);
 }
