@@ -6,7 +6,7 @@
 /*   By: rpapagna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:39:10 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/22 16:55:17 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/25 16:12:16 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,32 @@ t_bignum*			bignum_trunc(t_bignum* bignum);
 /**
 	* Swaps data of 'a' and 'b'.
 **/
-void			bignum_swap(t_bignum* a, t_bignum* b);
+void				bignum_swap(t_bignum* a, t_bignum* b);
+
+/**
+	*  In place incrementation of bignum
+	*
+	* @param n bignum to increment
+	* @return the same bignum with value +1
+**/
+t_bignum*			bignum_increment(t_bignum* n);
+
+/**
+	* In place decrementation of bignum
+	*
+	* @param n bignum to dencrement
+	* @return the same bignum with value -1
+**/
+t_bignum*			bignum_decrement(t_bignum* n);
+
+/**
+	* Copys data from 'src' to 'dst'
+	*
+	* @param dst Number to be a copy
+	* @param src Number to be coppied
+	* @returns A pointer to 'dst'.
+**/
+t_bignum*			bignum_copy(t_bignum* dst, t_bignum* src);
 
 /*
 --------------------------------------------------------------------------------
