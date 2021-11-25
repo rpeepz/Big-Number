@@ -891,5 +891,115 @@ int main(void) {
 	bignum_del(&b);
 	bignum_del(&c);
 
+/*
+	Testing bignum_divide
+*/
+
+	printf("-------------------------------\n");
+	printf("bignum_copy test\n");
+	printf("-------------------------------\n");
+
+	num1 = "5";
+	num2 = "4200";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	printf("num1: %s, len: %ld, sign: %d\n", a->number, a->len, a->sign);
+	printf("num2: %s, len: %ld, sign: %d\n", b->number, b->len, b->sign);
+	bignum_copy(a, b);
+	printf("copy num2 %s, len: %ld, sign: %d\n", a->number, a->len, a->sign);
+	bignum_del(&a);
+	bignum_del(&b);
+	
+	num1 = "4200";
+	num2 = "5";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	printf("num1: %s, len: %ld, sign: %d\n", a->number, a->len, a->sign);
+	printf("num2: %s, len: %ld, sign: %d\n", b->number, b->len, b->sign);
+	bignum_copy(a, b);
+	printf("copy num2 %s, len: %ld, sign: %d\n", a->number, a->len, a->sign);
+	bignum_del(&a);
+	bignum_del(&b);
+	
+	num1 = "-4200";
+	num2 = "5";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	printf("num1: %s, len: %ld, sign: %d\n", a->number, a->len, a->sign);
+	printf("num2: %s, len: %ld, sign: %d\n", b->number, b->len, b->sign);
+	bignum_copy(a, b);
+	printf("copy num2 %s, len: %ld, sign: %d\n", a->number, a->len, a->sign);
+	bignum_del(&a);
+	bignum_del(&b);
+
+	num1 = "5";
+	num2 = "-4200";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	printf("num1: %s, len: %ld, sign: %d\n", a->number, a->len, a->sign);
+	printf("num2: %s, len: %ld, sign: %d\n", b->number, b->len, b->sign);
+	bignum_copy(a, b);
+	printf("copy num2 %s, len: %ld, sign: %d\n", a->number, a->len, a->sign);
+	bignum_del(&a);
+	bignum_del(&b);
+
+/*
+	Testing bignum_divide
+*/
+
+	printf("-------------------------------\n");
+	printf("bignum_divide test\n");
+	printf("-------------------------------\n");
+	
+	num1 = "150";
+	num2 = "0";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+	
+	num1 = "150";
+	num2 = "1";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+	
+	num1 = "150";
+	num2 = "-1";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+	
+	num1 = "0";
+	num2 = "150";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "690";
+	num2 = "10";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
 	return (0);
 }

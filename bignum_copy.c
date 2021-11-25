@@ -6,7 +6,7 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 15:39:38 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/25 18:01:57 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:22:40 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_bignum*		bignum_copy(t_bignum* dst, t_bignum* src)
 		dst->alloc_size = i;
 		dst->number = (char *)malloc(sizeof(char) * (i + 1));
 	}
+	dst->len = i;
 	dst->number[i] = '\0';
 	while (i > 0)
 	{
