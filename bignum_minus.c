@@ -85,17 +85,18 @@ static int			check_sign(t_bignum* n1, t_bignum* n2, int type, int l)
 	return (ret);
 }
 
-t_bignum*			bignum_add_neg(t_bignum* n1, t_bignum* n2, int type)
+t_bignum*			bignum_add_neg(t_bignum* n1, t_bignum* n2,\
+								int type, int swap)
 {
-	int			swap;
 	size_t		k;
 	t_bignum*	dif;
 
-	swap = 0;
 	if (n1->sign)
 		swap = check_sign(n1, n2, type, 0);
 	else if (n2->sign)
 		swap = check_sign(n2, n1, type, 1);
+	else if (type && !bignum_eq(n1, n2))
+		swap = -1;
 	else if (bignum_gt(n1, n2))
 	{
 		n2->sign = type;
@@ -117,6 +118,6 @@ t_bignum*			bignum_add_neg(t_bignum* n1, t_bignum* n2, int type)
 t_bignum*			bignum_minus(t_bignum* m, t_bignum* s)
 {
 	if (m->sign == s->sign)
-		return (bignum_add_neg(m, s, 1));
-	return (bignum_add_neg(m, s, 0));
+		return (bignum_add_neg(m, s, 1, 0));
+	return (bignum_add_neg(m, s, 0, 0));
 }
