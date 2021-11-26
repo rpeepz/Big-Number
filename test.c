@@ -1001,5 +1001,45 @@ int main(void) {
 	bignum_del(&b);
 	bignum_del(&c);
 
+	num1 = "883474";
+	num2 = "227";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "883474";
+	num2 = "-227";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-883474";
+	num2 = "227";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-883474";
+	num2 = "-227";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
 	return (0);
 }
