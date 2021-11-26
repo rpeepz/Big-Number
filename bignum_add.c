@@ -6,7 +6,7 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:16:03 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/23 11:13:20 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/26 16:07:10 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_bignum*			bignum_add(t_bignum* a1, t_bignum* a2)
 	t_bignum*	sum;
 	
 	if (a1->sign != a2->sign)
-		return (bignum_add_neg(a1, a2, 1));
+		return (bignum_add_neg(a1, a2, 1, 0));
 	k = 1 + ((a1->len > a2->len) ? a1->len : a2->len);
 	result = (char *)malloc(sizeof(char) * (k + 1));
 	sum = do_work(a1, a2, result, k);

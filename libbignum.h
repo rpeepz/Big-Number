@@ -6,7 +6,7 @@
 /*   By: rpapagna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:39:10 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/25 16:12:16 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/26 16:08:59 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,8 @@ int					bignum_compare(t_bignum* n1, t_bignum* n2, int type);
 /**
 	* Helper Function for combining positives and negatives.
 **/
-t_bignum*			bignum_add_neg(t_bignum* n1, t_bignum* n2, int type);
+t_bignum*			bignum_add_neg(t_bignum* n1, t_bignum* n2,\
+									int type, int swap);
 
 /**
 	* Helper Function for finding the sum of 'bignum'
