@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_dif.c                                           :+:      :+:    :+:   */
+/*   bignum_eq.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 10:36:10 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/24 10:36:10 by rpapagna         ###   ########.fr       */
+/*   Created: 2021/11/23 11:20:17 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/23 11:21:53 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../includes/libbignum.h"
 
-char			do_dif(size_t* i, size_t* j, char* n1, char* n2)
+int		bignum_eq(t_bignum* n1, t_bignum* n2)
 {
-	char	x;
+	size_t	i;
+	size_t	len;
 
-	x = 0;
-	if (*i != 0)
+	if (n1->sign == n2->sign && n1->len == n2->len)
 	{
-		--(*i);
-		if (n1[*i] != '-')
-			x += (n1[*i] - '0');
+		i = 0;
+		len = n1->len;
+		while (i < len)
+		{
+			if (n1->number[i] != n2->number[i])
+				break ;
+			++i;
+		}
+		if (i == len)
+			return (0);
 	}
-	if (*j != 0)
-	{
-		--(*j);
-		if (n2[*j] != '-')
-			x -= (n2[*j] - '0');
-	}
-	return (x);
+	return (1);
 }

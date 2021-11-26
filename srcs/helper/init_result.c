@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bignum_swap.c                                      :+:      :+:    :+:   */
+/*   init_result.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 11:28:15 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/23 11:28:15 by rpapagna         ###   ########.fr       */
+/*   Created: 2021/11/24 10:40:23 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/24 10:40:23 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../../includes/libbignum.h"
 
-void	bignum_swap(t_bignum* a, t_bignum* b)
+void			init_result(char* result, size_t k, int sign)
 {
-	size_t	tmp;
-	char*	tmp_num;
-	int		tmp_sign;
+	size_t	i;
 
-	tmp = a->alloc_size;
-	a->alloc_size = b->alloc_size;
-	b->alloc_size = tmp;
-	tmp = a->len;
-	a->len = b->len;
-	b->len = tmp;
-	tmp_num = a->number;
-	a->number = b->number;
-	b->number = tmp_num;
-	tmp_sign = a->sign;
-	a->sign = b->sign;
-	b->sign = tmp_sign;
+	i = 0;
+	if (sign)
+		result[i++] = '-';
+	while (i < k)
+		result[i++] = '0';
+	result[i] = '\0';
 }

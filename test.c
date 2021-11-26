@@ -1,5 +1,5 @@
-#include "libbignum.h"
-#include "../libft/includes/libft.h"
+#include "includes/libbignum.h"
+#include "includes/libft.h"
 #include <stdio.h>
 
 int main(void) {

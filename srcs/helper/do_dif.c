@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_result.c                                      :+:      :+:    :+:   */
+/*   do_dif.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 10:40:23 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/24 10:40:23 by rpapagna         ###   ########.fr       */
+/*   Created: 2021/11/24 10:36:10 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/24 10:36:10 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../../includes/libbignum.h"
 
-void			init_result(char* result, size_t k, int sign)
+char			do_dif(size_t* i, size_t* j, char* n1, char* n2)
 {
-	size_t	i;
+	char	x;
 
-	i = 0;
-	if (sign)
-		result[i++] = '-';
-	while (i < k)
-		result[i++] = '0';
-	result[i] = '\0';
+	x = 0;
+	if (*i != 0)
+	{
+		--(*i);
+		if (n1[*i] != '-')
+			x += (n1[*i] - '0');
+	}
+	if (*j != 0)
+	{
+		--(*j);
+		if (n2[*j] != '-')
+			x -= (n2[*j] - '0');
+	}
+	return (x);
 }

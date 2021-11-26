@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bignum_copy.c                                      :+:      :+:    :+:   */
+/*   bignum_swap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 15:39:38 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/25 18:22:40 by rpapagna         ###   ########.fr       */
+/*   Created: 2021/11/23 11:28:15 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/23 11:28:15 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../includes/libbignum.h"
 
-t_bignum*		bignum_copy(t_bignum* dst, t_bignum* src)
+void	bignum_swap(t_bignum* a, t_bignum* b)
 {
-	size_t	i;
+	size_t	tmp;
+	char*	tmp_num;
+	int		tmp_sign;
 
-	i = src->len;
-	if (i > dst->alloc_size)
-	{
-		free(dst->number);
-		dst->alloc_size = i;
-		dst->number = (char *)malloc(sizeof(char) * (i + 1));
-	}
-	dst->len = i;
-	dst->number[i] = '\0';
-	while (i > 0)
-	{
-		--i;
-		dst->number[i] = src->number[i];
-	}
-	dst->sign = src->sign;
-	return (dst);
+	tmp = a->alloc_size;
+	a->alloc_size = b->alloc_size;
+	b->alloc_size = tmp;
+	tmp = a->len;
+	a->len = b->len;
+	b->len = tmp;
+	tmp_num = a->number;
+	a->number = b->number;
+	b->number = tmp_num;
+	tmp_sign = a->sign;
+	a->sign = b->sign;
+	b->sign = tmp_sign;
 }

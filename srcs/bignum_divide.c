@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
-#include "libbignum.h"
+#include "../includes/libft.h"
+#include "../includes/libbignum.h"
 
 t_bignum*			init_remainder(char* dividend, size_t size)
 {

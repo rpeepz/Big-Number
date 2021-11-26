@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bignum_decrement.c                                 :+:      :+:    :+:   */
+/*   bignum_lt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 16:07:33 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/26 12:28:33 by rpapagna         ###   ########.fr       */
+/*   Created: 2021/11/23 11:20:32 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/23 11:21:17 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../includes/libbignum.h"
 
-t_bignum*			bignum_decrement(t_bignum* n)
+int		bignum_lt(t_bignum *n1, t_bignum *n2)
 {
-	t_bignum*	res;
-	t_bignum*	one;
-
-	one = bignum_init("1");
-	res = bignum_minus(n, one);
-	bignum_swap(n, res);
-	bignum_del(&one);
-	bignum_del(&res);
-	return (n);
+	return (bignum_compare(n1, n2, 1));
 }

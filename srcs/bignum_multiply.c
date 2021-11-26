@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../includes/libbignum.h"
 
 static char			do_product(char m1, char m2)
 {

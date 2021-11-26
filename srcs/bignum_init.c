@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
-#include "libbignum.h"
+#include "../includes/libft.h"
+#include "../includes/libbignum.h"
 
 int				bignum_init_eval(char *n)
 {

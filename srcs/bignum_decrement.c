@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bignum_eq.c                                        :+:      :+:    :+:   */
+/*   bignum_decrement.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 11:20:17 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/23 11:21:53 by rpapagna         ###   ########.fr       */
+/*   Created: 2021/11/25 16:07:33 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/26 12:28:33 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../includes/libbignum.h"
 
-int		bignum_eq(t_bignum* n1, t_bignum* n2)
+t_bignum*			bignum_decrement(t_bignum* n)
 {
-	size_t	i;
-	size_t	len;
+	t_bignum*	res;
+	t_bignum*	one;
 
-	if (n1->sign == n2->sign && n1->len == n2->len)
-	{
-		i = 0;
-		len = n1->len;
-		while (i < len)
-		{
-			if (n1->number[i] != n2->number[i])
-				break ;
-			++i;
-		}
-		if (i == len)
-			return (0);
-	}
-	return (1);
+	one = bignum_init("1");
+	res = bignum_minus(n, one);
+	bignum_swap(n, res);
+	bignum_del(&one);
+	bignum_del(&res);
+	return (n);
 }

@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bignum_increment.c                                 :+:      :+:    :+:   */
+/*   do_sum.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 16:07:00 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/26 12:27:52 by rpapagna         ###   ########.fr       */
+/*   Created: 2021/11/24 10:37:14 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/24 10:37:14 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../../includes/libbignum.h"
 
-t_bignum*			bignum_increment(t_bignum* n)
+char			do_sum(size_t* i, size_t* j, char* n1, char* n2)
 {
-	t_bignum*	res;
-	t_bignum*	one;
+	char	x;
 
-	one = bignum_init("1");
-	res = bignum_add(n, one);
-	bignum_swap(n, res);
-	bignum_del(&one);
-	bignum_del(&res);
-	return (n);
+	x = 0;
+	if (*i != 0)
+	{
+		--(*i);
+		if (n1[*i] != '-')
+			x += (n1[*i] - '0');
+	}
+	if (*j != 0)
+	{
+		--(*j);
+		if (n2[*j] != '-')
+			x += (n2[*j] - '0');
+	}
+	return (x);
 }

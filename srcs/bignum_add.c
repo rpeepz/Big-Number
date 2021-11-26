@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
-#include "libbignum.h"
+#include "../includes/libft.h"
+#include "../includes/libbignum.h"
 
 static t_bignum*	do_work(t_bignum* n1, t_bignum* n2, char* result, size_t k)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../includes/libbignum.h"
 
 int		bignum_gt(t_bignum *n1, t_bignum *n2)
 {

@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_sum.c                                           :+:      :+:    :+:   */
+/*   bignum_copy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 10:37:14 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/24 10:37:14 by rpapagna         ###   ########.fr       */
+/*   Created: 2021/11/25 15:39:38 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/25 18:22:40 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libbignum.h"
+#include "../includes/libbignum.h"
 
-char			do_sum(size_t* i, size_t* j, char* n1, char* n2)
+t_bignum*		bignum_copy(t_bignum* dst, t_bignum* src)
 {
-	char	x;
+	size_t	i;
 
-	x = 0;
-	if (*i != 0)
+	i = src->len;
+	if (i > dst->alloc_size)
 	{
-		--(*i);
-		if (n1[*i] != '-')
-			x += (n1[*i] - '0');
+		free(dst->number);
+		dst->alloc_size = i;
+		dst->number = (char *)malloc(sizeof(char) * (i + 1));
 	}
-	if (*j != 0)
+	dst->len = i;
+	dst->number[i] = '\0';
+	while (i > 0)
 	{
-		--(*j);
-		if (n2[*j] != '-')
-			x += (n2[*j] - '0');
+		--i;
+		dst->number[i] = src->number[i];
 	}
-	return (x);
+	dst->sign = src->sign;
+	return (dst);
 }
