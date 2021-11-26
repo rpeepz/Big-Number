@@ -891,6 +891,16 @@ int main(void) {
 	bignum_del(&b);
 	bignum_del(&c);
 
+	num1 = "-9";
+	num2 = "-9";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_multiply(a, b);
+	printf("%s x %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
 /*
 	Testing bignum_divide
 */
@@ -1033,6 +1043,16 @@ int main(void) {
 
 	num1 = "-883474";
 	num2 = "-227";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_divide(a, b);
+	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-883474";
+	num2 = "-1";
 	a = bignum_init(num1);
 	b = bignum_init(num2);
 	c = bignum_divide(a, b);
