@@ -6,102 +6,105 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 14:53:09 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/25 14:53:09 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/26 15:53:09 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 #include "libbignum.h"
 
-t_bignum*	bignum_cat(t_bignum* dst, t_bignum* src)
+t_bignum*			init_remainder(char* dividend, size_t size)
 {
-	char		new_number[dst->len + src->len];
-	t_bignum*	new_bignum;
+	t_bignum*	r;
+	char*		remainder;
 
-	ft_bzero(new_number, dst->len + src->len);
-	ft_strcat(new_number, dst->number);
-	ft_strcat(new_number, src->number);
-	new_bignum = bignum_init(new_number);
-	bignum_swap(new_bignum, dst);
-	bignum_del(&new_bignum);
-	return (dst);
+	remainder = (char *)malloc(sizeof(char) * (size + 1));
+	ft_bzero(remainder, size);
+	size -= 1;
+	ft_strncat(remainder, dividend, size);
+	r = bignum_init(remainder);
+	free(remainder);
+	return (r);
 }
 
-t_bignum*	do_divide(t_bignum* d1, t_bignum* d2, t_bignum* dividend, t_bignum* divisor)
+t_bignum			*find_quotient(t_bignum* divisor, t_bignum* bignum_id, t_bignum* remainder, char *q)
 {
-	char		idividend[d2->len];
-	char		quotient[d2->len + 1];
-	t_bignum*	one;
+	t_bignum*	tmp;
 	t_bignum*	d;
-	t_bignum*	tmp2;
-	t_bignum*	bignum_idividend;
-	t_bignum*	bignum_remainder;
-	char*		remainder;
+	int			found;
+
+	d = bignum_init("1");
+	found = 0;
+	while (!found)
+	{
+		tmp = bignum_multiply(divisor, d);
+		if (!bignum_gt(tmp, bignum_id))
+		{
+			found = 1;
+			bignum_decrement(d);
+			bignum_del(&tmp);
+			tmp = bignum_multiply(divisor, d);
+			remainder = bignum_minus(bignum_id, tmp);
+		}
+		else
+			bignum_increment(d);
+		bignum_del(&tmp);
+	}
+	ft_strcat(q, d->number);
+	bignum_del(&d);
+	return (remainder);
+}
+
+t_bignum*			get_quotient(t_bignum* dividend, t_bignum* divisor, t_bignum* remainder, char* quotient)
+{
 	size_t		k;
 	size_t		l;
 	size_t		i;
+	char		idividend[divisor->len];
+	t_bignum*	bignum_id;
 
-	dividend = bignum_init(d1->number + d1->sign);
-	divisor = bignum_init(d2->number + d2->sign);
-	ft_bzero(quotient, divisor->len + 1);
-	if (d1->sign ^ d2->sign)
-		quotient[0] = '-';
-	one = bignum_init("1");
-	d = bignum_init("1");
 	k = dividend->len;
-	l = divisor->len;
-// step 1: if k < l remainder is dividend and quotient is 0
-	if (k < l)
-		return (bignum_init("0"));
-// step 2: set remainder to l-1 of msd of dividend
-	remainder = (char *)malloc(sizeof(char) * (l + 1));
-	ft_bzero(remainder, l);
-	l -= 1;
-	ft_strncat(remainder, dividend->number, l);
-	bignum_remainder = bignum_init(remainder);
-// step 3: inititalize i to 0
+	l = divisor->len - 1;
 	i = 0;
 	while (i < k - l)
 	{
-// step 4: slap on next digit from dividend (l+i) to intermediate dividend
 		ft_bzero(idividend, divisor->len);
-		ft_strcat(idividend, bignum_remainder->number);
-		bignum_del(&bignum_remainder);
+		ft_strcat(idividend, remainder->number);
+		bignum_del(&remainder);
 		ft_strncat(idividend, dividend->number + (l + i), 1);
-		bignum_idividend = bignum_init(idividend);
-// step 5: find next digit of quotient
-		d = bignum_copy(d, one);
-		int found = 0;
-		while (!found)
-		{
-			tmp2 = bignum_multiply(divisor, d);
-			if (!bignum_gt(tmp2, bignum_idividend))
-			{
-// step 6: set remainder to intermediate divident - (d * divisor)
-				found = 1;
-				bignum_decrement(d);
-				bignum_del(&tmp2);
-				tmp2 = bignum_multiply(divisor, d);
-				bignum_remainder = bignum_minus(bignum_idividend, tmp2);
-			}
-			else
-				bignum_increment(d);
-			bignum_del(&tmp2);
-		}
-		ft_strcat(quotient, d->number);
-		bignum_del(&bignum_idividend);
-// step 7: if i <= (k - l) increment and go to step 4
+		bignum_id = bignum_init(idividend);
+		remainder = find_quotient(divisor, bignum_id, remainder, quotient);
+		bignum_del(&bignum_id);
 		++i;
 	}
+	return (remainder);
+}
+
+t_bignum*			do_divide(t_bignum* d1, t_bignum* d2, t_bignum* dividend, t_bignum* divisor)
+{
+	char		*quotient;
+	t_bignum*	bignum_r;
+	t_bignum*	bignum_quotient;
+
+	dividend = bignum_init(d1->number + d1->sign);
+	divisor = bignum_init(d2->number + d2->sign);
+	if (dividend->len < divisor->len)
+		return (bignum_init("0"));
+	bignum_r = init_remainder(dividend->number, divisor->len);
+	quotient = (char*)malloc(sizeof(char) * (d2->len + 2));
+	ft_bzero(quotient, d2->len + 1);
+	if (d1->sign ^ d2->sign)
+		quotient[0] = '-';
+	bignum_r = get_quotient(dividend, divisor, bignum_r, quotient);
+	bignum_del(&bignum_r);
+	bignum_quotient = bignum_init(quotient);
+	free(quotient);
 	bignum_del(&dividend);
 	bignum_del(&divisor);
-	bignum_del(&d);
-	bignum_del(&one);
-	bignum_del(&bignum_remainder);
-	free(remainder);
-	return (bignum_init(quotient));
+	return (bignum_quotient);
 }
-t_bignum*	bignum_divide(t_bignum *d1, t_bignum *d2)
+
+t_bignum*			bignum_divide(t_bignum *d1, t_bignum *d2)
 {
 	t_bignum *check;
 	t_bignum *tmp;
