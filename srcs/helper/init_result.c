@@ -6,13 +6,13 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:40:23 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/24 10:40:23 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:43:01 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libbignum.h"
 
-void			init_result(char* result, size_t k, int sign)
+void			init_result(char *result, size_t k, int sign)
 {
 	size_t	i;
 

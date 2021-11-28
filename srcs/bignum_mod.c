@@ -6,17 +6,17 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 18:59:04 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/27 18:59:04 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:53:57 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include "../includes/libbignum.h"
 
-static void			bignum_neg(t_bignum* a)
+static void			bignum_neg(t_bignum *a)
 {
-	t_bignum*	b;
-	t_bignum*	res;
+	t_bignum	*b;
+	t_bignum	*res;
 
 	b = bignum_init("-1");
 	res = bignum_multiply(a, b);
@@ -25,11 +25,11 @@ static void			bignum_neg(t_bignum* a)
 	bignum_del(&res);
 }
 
-static t_bignum*	do_mod(t_bignum* d1, t_bignum* d2,\
-					t_bignum* dividend, t_bignum* divisor)
+static t_bignum		*do_mod(t_bignum *d1, t_bignum *d2,\
+							t_bignum *dividend, t_bignum *divisor)
 {
 	char		*quotient;
-	t_bignum*	remainder;
+	t_bignum	*remainder;
 
 	dividend = bignum_init(d1->number + d1->sign);
 	divisor = bignum_init(d2->number + d2->sign);
@@ -51,7 +51,7 @@ static t_bignum*	do_mod(t_bignum* d1, t_bignum* d2,\
 	return (remainder);
 }
 
-t_bignum*			bignum_mod(t_bignum *d1, t_bignum *d2)
+t_bignum			*bignum_mod(t_bignum *d1, t_bignum *d2)
 {
 	t_bignum *check;
 	t_bignum *n1;

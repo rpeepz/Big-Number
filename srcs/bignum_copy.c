@@ -6,13 +6,13 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 15:39:38 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/25 18:22:40 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:45:34 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libbignum.h"
 
-t_bignum*		bignum_copy(t_bignum* dst, t_bignum* src)
+t_bignum		*bignum_copy(t_bignum *dst, t_bignum *src)
 {
 	size_t	i;
 

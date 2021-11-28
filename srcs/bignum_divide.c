@@ -6,19 +6,19 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 14:53:09 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/26 15:53:09 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:47:17 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include "../includes/libbignum.h"
 
-static t_bignum*	do_divide(t_bignum* d1, t_bignum* d2,\
-					t_bignum* dividend, t_bignum* divisor)
+static t_bignum		*do_divide(t_bignum *d1, t_bignum *d2,\
+					t_bignum *dividend, t_bignum *divisor)
 {
 	char		*quotient;
-	t_bignum*	remainder;
-	t_bignum*	bignum_quotient;
+	t_bignum	*remainder;
+	t_bignum	*bignum_quotient;
 
 	dividend = bignum_init(d1->number + d1->sign);
 	divisor = bignum_init(d2->number + d2->sign);
@@ -42,7 +42,7 @@ static t_bignum*	do_divide(t_bignum* d1, t_bignum* d2,\
 	return (bignum_quotient);
 }
 
-t_bignum*			bignum_divide(t_bignum *d1, t_bignum *d2)
+t_bignum			*bignum_divide(t_bignum *d1, t_bignum *d2)
 {
 	t_bignum *check;
 	t_bignum *n1;

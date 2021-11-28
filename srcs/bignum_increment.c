@@ -6,16 +6,16 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 16:07:00 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/26 12:27:52 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:48:14 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libbignum.h"
 
-t_bignum*			bignum_increment(t_bignum* n)
+t_bignum			*bignum_increment(t_bignum *n)
 {
-	t_bignum*	res;
-	t_bignum*	one;
+	t_bignum	*res;
+	t_bignum	*one;
 
 	one = bignum_init("1");
 	res = bignum_add(n, one);

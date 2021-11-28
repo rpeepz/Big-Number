@@ -6,14 +6,14 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:16:03 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/26 16:07:10 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:45:07 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include "../includes/libbignum.h"
 
-static t_bignum*	do_work(t_bignum* n1, t_bignum* n2, char* result, size_t k)
+static t_bignum		*do_work(t_bignum *n1, t_bignum *n2, char *result, size_t k)
 {
 	size_t	i;
 	size_t	j;
@@ -34,11 +34,11 @@ static t_bignum*	do_work(t_bignum* n1, t_bignum* n2, char* result, size_t k)
 	return (bignum_init(result));
 }
 
-t_bignum*			bignum_add(t_bignum* a1, t_bignum* a2)
+t_bignum			*bignum_add(t_bignum *a1, t_bignum *a2)
 {
 	size_t		k;
-	char*		result;
-	t_bignum*	sum;
+	char		*result;
+	t_bignum	*sum;
 	
 	if (a1->sign != a2->sign)
 		return (bignum_add_neg(a1, a2, 1, 0));

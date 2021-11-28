@@ -6,16 +6,16 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 11:28:15 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/23 11:28:15 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:55:25 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libbignum.h"
 
-void	bignum_swap(t_bignum* a, t_bignum* b)
+void	bignum_swap(t_bignum *a, t_bignum *b)
 {
+	char	*tmp_num;
 	size_t	tmp;
-	char*	tmp_num;
 	int		tmp_sign;
 
 	tmp = a->alloc_size;

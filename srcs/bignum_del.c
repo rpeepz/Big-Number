@@ -6,13 +6,13 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 11:16:44 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/23 11:17:01 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:46:21 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libbignum.h"
 
-void			bignum_del(t_bignum** p)
+void			bignum_del(t_bignum **p)
 {
 	free((*p)->number);
 	(*p)->number = NULL;

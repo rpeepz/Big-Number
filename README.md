@@ -5,7 +5,7 @@
 
 ### Constructor
 
-- `t_bignum* bignum_init(char* number)`
+- `t_bignum *bignum_init(char *number)`
 
 ### Conditional "Operators"
 
@@ -22,7 +22,8 @@ All the functions here take two `t_bignum *` as arguments and return the result 
 - `bignum_add`
 - `bignum_minus`
 - `bignum_multiply`
-- `bignum_divide` 
+- `bignum_divide`
+- `bignum_mod`
 
 ### Destructor
 
@@ -34,7 +35,7 @@ All the functions here take two `t_bignum *` as arguments and return the result 
 - `bignum_swap(t_bignum *a, t_bignum *b)` swaps two large integers.
 - `bignum_increment(t_bignum *n)` returns n with an incremented value.
 - `bignum_decrement(t_bignum *n)` returns n with an decremented value.
-- `bignum_copy(t_bignum *dst, t_bignum* src)` returns a copy of `src`.
+- `bignum_copy(t_bignum *dst, t_bignum *src)` returns a copy of `src`.
 
 ## Credits
 

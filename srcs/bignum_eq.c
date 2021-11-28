@@ -6,13 +6,13 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 11:20:17 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/23 11:21:53 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:47:41 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libbignum.h"
 
-int		bignum_eq(t_bignum* n1, t_bignum* n2)
+int		bignum_eq(t_bignum *n1, t_bignum *n2)
 {
 	size_t	i;
 	size_t	len;

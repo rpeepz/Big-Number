@@ -6,13 +6,13 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:36:10 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/24 10:36:10 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:39:50 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libbignum.h"
 
-char			do_dif(size_t* i, size_t* j, char* n1, char* n2)
+char			do_dif(size_t *i, size_t *j, char *n1, char *n2)
 {
 	char	x;
 

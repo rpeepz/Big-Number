@@ -6,14 +6,14 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:16:32 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/23 12:12:20 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:49:09 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include "../includes/libbignum.h"
 
-int				bignum_init_eval(char *n)
+static int		bignum_init_eval(char *n)
 {
 	size_t		i;
 	size_t		len;
@@ -34,7 +34,7 @@ int				bignum_init_eval(char *n)
 	return (i);
 }
 
-t_bignum*		bignum_init(char* number)
+t_bignum		*bignum_init(char *number)
 {
 	t_bignum	*a;
 	size_t		i;

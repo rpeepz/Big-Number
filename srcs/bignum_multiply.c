@@ -6,7 +6,7 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:54:23 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/26 13:33:18 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:54:55 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char			do_product(char m1, char m2)
 		return ((m1 - '0') * (m2 - '0'));
 }
 
-static t_bignum*	do_work(t_bignum* n1, t_bignum* n2, char* result, size_t k)
+static t_bignum		*do_work(t_bignum *n1, t_bignum *n2, char *result, size_t k)
 {
 	size_t	i;
 	size_t	j;
@@ -49,11 +49,11 @@ static t_bignum*	do_work(t_bignum* n1, t_bignum* n2, char* result, size_t k)
 	return (bignum_init(result));
 }
 
-t_bignum*		bignum_multiply(t_bignum* m1, t_bignum* m2)
+t_bignum		*bignum_multiply(t_bignum *m1, t_bignum *m2)
 {
 	size_t		k;
-	char*		result;
-	t_bignum*	product;
+	char		*result;
+	t_bignum	*product;
 
 	k = m1->len + m2->len + 1;
 	product = bignum_init("0");

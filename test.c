@@ -5,12 +5,12 @@
 int main(void) {
 
 	
-	t_bignum*	a;
-	t_bignum*	b;
-	t_bignum*	c;
-	char*		number;
-	char*		num1;
-	char*		num2;
+	t_bignum	*a;
+	t_bignum	*b;
+	t_bignum	*c;
+	char		*number;
+	char		*num1;
+	char		*num2;
 
 /*
 	Testing bignum_init and bignum_del

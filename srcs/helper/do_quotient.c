@@ -6,18 +6,18 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 12:46:23 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/28 12:46:23 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:41:30 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 #include "../../includes/libbignum.h"
 
-static t_bignum		*find_quotient(t_bignum* divisor, t_bignum* bignum_id,\
-									t_bignum* remainder, char *quotient)
+static t_bignum		*find_quotient(t_bignum *divisor, t_bignum *bignum_id,\
+									t_bignum *remainder, char *quotient)
 {
-	t_bignum*	tmp;
-	t_bignum*	d;
+	t_bignum	*tmp;
+	t_bignum	*d;
 	int			found;
 
 	d = bignum_init("1");
@@ -42,14 +42,14 @@ static t_bignum		*find_quotient(t_bignum* divisor, t_bignum* bignum_id,\
 	return (remainder);
 }
 
-t_bignum*	do_quotient(t_bignum* dividend, t_bignum* divisor,\
-									t_bignum* remainder, char* quotient)
+t_bignum			*do_quotient(t_bignum *dividend, t_bignum *divisor,\
+								t_bignum *remainder, char *quotient)
 {
 	size_t		k;
 	size_t		l;
 	size_t		i;
 	char		idividend[divisor->len];
-	t_bignum*	bignum_idividend;
+	t_bignum	*bignum_idividend;
 
 	k = dividend->len;
 	l = divisor->len - 1;

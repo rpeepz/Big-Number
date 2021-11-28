@@ -6,13 +6,13 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 08:38:40 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/24 12:12:21 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:55:46 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libbignum.h"
 
-t_bignum*	bignum_trunc(t_bignum* bignum)
+t_bignum	*bignum_trunc(t_bignum *bignum)
 {
 	size_t	i;
 	size_t	j;

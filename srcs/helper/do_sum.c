@@ -6,13 +6,13 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:37:14 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/24 10:37:14 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:41:59 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libbignum.h"
 
-char			do_sum(size_t* i, size_t* j, char* n1, char* n2)
+char			do_sum(size_t *i, size_t *j, char *n1, char *n2)
 {
 	char	x;
 
