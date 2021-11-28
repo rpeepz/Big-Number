@@ -56,6 +56,10 @@ t_bignum*		bignum_multiply(t_bignum* m1, t_bignum* m2)
 	t_bignum*	product;
 
 	k = m1->len + m2->len + 1;
+	product = bignum_init("0");
+	if (!bignum_eq(m1, product) || !bignum_eq(m2, product))
+		return (product);
+	bignum_del(&product);
 	result = (char *)malloc(sizeof(char) * (k + 1));
 	product = do_work(m1, m2, result, k);
 	free(result);
