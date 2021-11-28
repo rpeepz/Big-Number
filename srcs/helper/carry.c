@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bignum_minus.c                                     :+:      :+:    :+:   */
+/*   carry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 10:53:16 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/28 14:12:35 by rpapagna         ###   ########.fr       */
+/*   Created: 2021/11/28 14:18:20 by rpapagna          #+#    #+#             */
+/*   Updated: 2021/11/28 14:23:50 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libbignum.h"
+#include "../../includes/libbignum.h"
 
-t_bignum			*bignum_minus(t_bignum *m, t_bignum *s)
+void			carry(char *result, size_t k, int type)
 {
-	if (m->sign == s->sign)
-		return (bignum_add_neg(m, s, 1, 0));
-	return (bignum_add_neg(m, s, 0, 0));
+	if (type && k && result[k] < '0')
+	{
+		result[k] += 10;
+		result[k - 1] -= 1;
+	}
+	else if (!type && k && result[k] > '9')
+	{
+		result[k] -= 10;
+		result[k - 1] += 1;
+	}
 }

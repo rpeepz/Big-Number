@@ -7,7 +7,8 @@ LIB			= .libft.a
 SRC_PATH	= srcs/
 HELPER_PATH	= $(SRC_PATH)/helper/
 
-SRCS	= bignum_add.c \
+SRCS	= bignum_add_neg.c \
+		bignum_add.c \
 		bignum_copy.c \
 		bignum_decrement.c \
 		bignum_del.c \
@@ -23,6 +24,7 @@ SRCS	= bignum_add.c \
 		bignum_swap.c \
 		bignum_trunc.c
 HELPER	= bignum_compare.c \
+		carry.c \
 		do_dif.c \
 		do_quotient.c \
 		do_sum.c \

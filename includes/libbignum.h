@@ -6,7 +6,7 @@
 /*   By: rpapagna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:39:10 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/28 13:38:49 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 14:24:05 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,5 +218,10 @@ void				init_result(char *result, size_t k, int sign);
 	* Helper Function for inititalizing the remainder to use for bignum_divide.
 **/
 t_bignum			*init_remainder(char *dividend, size_t size);
+
+/**
+	* Helper Function for carrying a digit to the next higher magnitude.
+**/
+void				carry(char *result, size_t k, int type);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rpapagna <rpapagna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:16:03 by rpapagna          #+#    #+#             */
-/*   Updated: 2021/11/28 13:45:07 by rpapagna         ###   ########.fr       */
+/*   Updated: 2021/11/28 14:19:37 by rpapagna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ static t_bignum		*do_work(t_bignum *n1, t_bignum *n2, char *result, size_t k)
 	{
 		--k;
 		result[k] += do_sum(&i, &j, n1->number, n2->number);
-		if (result[k] > '9')
-		{
-			result[k] -= 10;
-			result[k - 1] += 1;
-		}
+		carry(result, k, 0);
 	}
 	return (bignum_init(result));
 }
