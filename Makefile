@@ -1,4 +1,4 @@
-NAME	= test_bignum.exe
+NAME	= bignum_test.exe
 
 CFLAGS	= -Wall -Werror -Wextra -g
 
@@ -18,12 +18,15 @@ SRCS	= bignum_add.c \
 		bignum_init.c \
 		bignum_lt.c \
 		bignum_minus.c \
+		bignum_mod.c \
 		bignum_multiply.c \
 		bignum_swap.c \
 		bignum_trunc.c
 HELPER	= bignum_compare.c \
 		do_dif.c \
+		do_quotient.c \
 		do_sum.c \
+		init_remainder.c \
 		init_result.c
 
 .PHONY: clean

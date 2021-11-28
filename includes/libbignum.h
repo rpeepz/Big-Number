@@ -97,6 +97,15 @@ t_bignum*			bignum_multiply(t_bignum* m1, t_bignum* m2);
 **/
 t_bignum*			bignum_divide(t_bignum* d1, t_bignum* d2);
 
+/**
+	* Finds the modulus after dividing d1 by d2.
+	*
+	* @param	d1 pointer to the dividend.
+	* @param	d2 pointer to the divisor.
+	* @returns	An allocated pointer to the modulus.
+**/
+t_bignum*			bignum_mod(t_bignum* d1, t_bignum* d2);
+
 /*
 --------------------------------------------------------------------------------
 	Comparators
@@ -195,8 +204,19 @@ char				do_sum(size_t* i, size_t* j, char* n1, char* n2);
 char				do_dif(size_t* i, size_t* j, char* n1, char* n2);
 
 /**
+	* Helper Function for finding the quotient of 'bignum'.
+**/
+t_bignum*			do_quotient(t_bignum* dividend, t_bignum* divisor,\
+								t_bignum* remainder, char* quotient);
+
+/**
 	* Helper Function for inititalizing a resulting string to use for bignum.
 **/
 void				init_result(char* result, size_t k, int sign);
+
+/**
+	* Helper Function for inititalizing the remainder to use for bignum_divide.
+**/
+t_bignum*			init_remainder(char* dividend, size_t size);
 
 #endif

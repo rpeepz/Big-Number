@@ -902,7 +902,7 @@ int main(void) {
 	bignum_del(&c);
 
 /*
-	Testing bignum_divide
+	Testing bignum_copy
 */
 
 	printf("-------------------------------\n");
@@ -1057,6 +1057,168 @@ int main(void) {
 	b = bignum_init(num2);
 	c = bignum_divide(a, b);
 	printf("%s / %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+/*
+	Testing bignum_mod
+*/
+
+	printf("-------------------------------\n");
+	printf("bignum_mod test\n");
+	printf("-------------------------------\n");
+	
+	num1 = "150";
+	num2 = "0";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %s\n", a->number, b->number, "undefined");
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+	
+	num1 = "150";
+	num2 = "1";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, (150 % 1));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "150";
+	num2 = "-1";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, (150 % (-1)));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+	
+	num1 = "0";
+	num2 = "150";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, (0 % 150));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "690";
+	num2 = "10";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, (690 % 10));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "883474";
+	num2 = "227";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, (883474 % 227));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "883474";
+	num2 = "-227";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, (883474 % (-227)));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-883474";
+	num2 = "227";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, (-883474 % 227));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-883474";
+	num2 = "-227";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, ((-883474) % (-227)));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-883474";
+	num2 = "-1";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, ((-883474) % (-1)));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "7";
+	num2 = "13";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, (7 % 13));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-7";
+	num2 = "13";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, ((-7) % 13));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "7";
+	num2 = "-13";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, (7 % (-13)));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
+	bignum_del(&a);
+	bignum_del(&b);
+	bignum_del(&c);
+
+	num1 = "-7";
+	num2 = "-13";
+	a = bignum_init(num1);
+	b = bignum_init(num2);
+	c = bignum_mod(a, b);
+	printf("actual:\t%s %% %s = %d\n", a->number, b->number, ((-7) % (-13)));
+	printf("mine:\t%s %% %s = %s\n", a->number, b->number, c->number);
 	bignum_del(&a);
 	bignum_del(&b);
 	bignum_del(&c);
