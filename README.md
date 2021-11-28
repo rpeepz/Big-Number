@@ -34,8 +34,8 @@ All the functions here take two `t_bignum *` as arguments and return the result 
 - `bignum_truc(t_bignum *bignum)` returns the bignum with preceeding 0's stripped.
 - `bignum_swap(t_bignum *a, t_bignum *b)` swaps two large integers.
 - `bignum_increment(t_bignum *n)` returns n with an incremented value.
-- `bignum_decrement(t_bignum *n)` returns n with an decremented value.
-- `bignum_copy(t_bignum *dst, t_bignum *src)` returns a copy of `src`.
+- `bignum_decrement(t_bignum *n)` returns n with a decremented value.
+- `bignum_copy(t_bignum *dst, t_bignum *src)` returns `dst` with info from `src`.
 
 ## Credits
 
